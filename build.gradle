@@ -1,0 +1,28 @@
+
+buildscript {
+    apply from: './versions.gradle'
+    addRepos(repositories) //增加代码仓库
+    dependencies {
+        classpath deps.android_gradle_plugin
+        classpath deps.android_maven_gradle_plugin
+        classpath deps.retrolambda
+
+    }
+
+}
+
+allprojects {
+    repositories {
+
+        // 添加下面的内容
+        flatDir {
+            dirs 'libs'
+        }
+
+        addRepos(repositories)
+    }
+}
+
+task clean(type: Delete) {
+    delete rootProject.buildDir
+}
